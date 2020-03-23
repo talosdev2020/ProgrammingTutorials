@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <title>
+      Add Linux User
+    </title>
+</head>
+<body>
+
+<h2 id="creating-a-new-user">Creating a new user</h2>
+<p>In order to create a new linux user from the command line, we need to have <em>sudo</em> access.<br>
+The command  we will use for that is ‘<em><strong>adduser</strong></em>’ and we will create a user with username “<em><strong>testuser</strong></em>” as follows:</p>
+<pre><code>$ sudo adduser testuser
+</code></pre>
+<p>After giving the above command we are asked to give our password (because we used <em>sudo</em>):</p>
+<pre><code>  [sudo] password for talosdev: 
+</code></pre>
+<p>After we give our password we see some output like this:</p>
+<pre><code>  Adding user `testuser' ...
+  Adding new group `testuser' (1000) ...
+  Adding new user `testuser' (1000) with group `testuser' ...
+  Creating home directory `/home/testuser' ...
+  Copying files from `/etc/skel' ...
+</code></pre>
+<p>And then we are asked to give the new user’s password twice:</p>
+<pre><code>  New password: 
+  Retype new password: 
+  passwd: password updated successfully
+  Changing the user information for testuser
+</code></pre>
+<p>Then, we are asked to give some optional details about the user (we can just press enter if we want to leave them blank):</p>
+<pre><code>  Enter the new value, or press ENTER for the default
+	  Full Name []: 
+	  Room Number []: 
+	  Work Phone []: 
+	  Home Phone []: 
+	  Other []: 
+</code></pre>
+<p>And finally, we are asked if the above information is correct:</p>
+<pre><code>  Is the information correct? [Y/n] Y
+$ _
+</code></pre>
+<p><em>And that’s it, the new user is created as well as his/her home directory.</em></p>
+<h2 id="giving-the-new-user-sudo-access">Giving the new user <em>sudo</em> access</h2>
+<p>In order to give the new user <em><strong>sudo</strong></em> access we will use the <em><strong>usermod</strong></em> command (using <em>sudo</em> of course, and giving our current user’s password if asked).<br>
+The <em>usermod</em> command actually adds the new user to a group named ‘<em><strong>sudo</strong></em>’, as shown here:</p>
+<pre><code>$ sudo usermod -aG sudo testuser 
+  [sudo] password for talosdev:
+$ _
+</code></pre>
+<p>And again, that’s all, the user ‘<em>testuser</em>’ is now a member of the ‘<em>sudo</em>’ group, and has gained <em>sudo</em> access.</p>
+<h2 id="deleting-a-user-with-his-home-directory">Deleting a user with his home directory</h2>
+<p>When we want to delete a user in Linux, we have to take under consideration if we also want to delete the user’s home directory (and all the files in it) or not, or if we want to delete all the files created by the user elsewhere in our system.</p>
+<p>I would recommend, to keep the files the user created elsewhere, because it can create problems sometimes, if these files are used by other users or in certain services, and so, we should only delete the user’s home directory.</p>
+<p>The command for deleting a user is ‘<em><strong>deluser</strong></em>’ and optionally, if we also want to delete the user’s home directory we can add the option <strong>‘<em>- -remove-home</em>’</strong>, aditionally, another option we could use is <em><strong>’–remove-all-files’</strong></em>  in order to delete all the files created by the user in our system. The syntax goes like this:</p>
+<pre><code>$ sudo deluser [--remove-home] [--remove-all-files] testuser
+</code></pre>
+<p>In our case we will only use the first option:</p>
+<pre><code>$ sudo deluser --remove-home testuser
+  [sudo] password for talosdev: 
+  Looking for files to backup/remove ...
+  Removing files ...
+  Removing user `testuser' ...
+  Warning: group `testuser' has no more members.
+  Done.
+$ _
+</code></pre>
+<p>After we give our current user’s password (if asked, due to ‘sudo’ at the beginning of the command), we see some output and the word ‘<em>Done</em>’ meaning that the user is now deleted as well as the user’s home directory.</p>
+
+</body>
+</html>
+
