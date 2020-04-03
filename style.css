@@ -1,0 +1,109 @@
+:root {
+    /* --main-bg-color: rgb(255, 255, 255); */
+    --main-bg-color: #F9FAFC;
+    --griddiv-color: rgb(194, 167, 167);
+    --bordercolor: rgb(158, 162, 173);
+}
+
+*{
+    /* margin: 0px;
+    padding: 0px; */
+    box-sizing: border-box;
+
+    color: rgba(37,38,94,0.7);
+    font-family: "euclid_circular_a","Source Sans Pro","Helvetica Neue","Helvetica","Arial",sans-serif;
+    text-rendering: optimizeLegibility;
+    font-size: 16px;
+    line-height: 25px;
+}
+
+body{
+    background: var(--main-bg-color);
+    padding: 50px;
+}
+
+h1{
+    font-weight: bolder;
+    font-size: xx-large;
+}
+
+.linenums li {
+    list-style-type: decimal;
+    position: relative;
+    border-left: 1px solid #cfcfcf;
+    padding-left: 10px;
+    font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+    
+}
+
+pre.prettyprint{
+    border: 1px solid #d3dce6;
+    padding-left: 35px;
+}
+
+code.span{
+    font-weight: lighter;
+}
+
+pre{
+    /* font-family: monospace; */
+    background-color: #f3f3f3;
+    border: 1px solid #d3dce6;
+    width: em(440);
+    margin: .5em auto;
+    padding: 0.5em;
+    border-radius: .25em;
+    line-height: 0;
+    counter-reset: line;
+}
+code {
+    display: block;
+    line-height: 1.5rem;
+    font-family: "Droid Sans Mono","Inconsolata","Menlo","Consolas","Bitstream Vera Sans Mono","Courier",monospace ;
+    /* font-size: 14px !important; */
+    overflow: auto;
+    
+
+}
+code:before {
+      /* counter-increment: line; */
+      /* content: counter(line); */
+      display: inline-block;
+      border-right: 1px solid #ddd;
+      padding: 0 .5em;
+      margin-right: .5em;
+      color: #888
+}
+
+code, pre span{
+    font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+    font-size: 14px;
+}
+
+svg{
+    fill: #C0C0C0;
+    width: 30px;
+    height: 30px;
+
+}
+
+.talosdev svg{
+    border: 1px solid #C0C0C0;
+    border-radius: 50%;
+}
+
+.litem svg{
+    fill: #9C9C9C;
+    width: 30px;
+    height: 30px;
+    padding: 1px;
+    margin: 5px;
+}
+
+.litem svg:hover{
+    fill: rgb(212, 212, 212);
+}
+
+.litem a{
+    text-decoration: none;
+}
